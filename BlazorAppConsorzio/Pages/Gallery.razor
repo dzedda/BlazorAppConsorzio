@@ -1,0 +1,22 @@
+﻿@page "/gallery/{Id:int}"
+@inject ICaseicificioRepository caseificioRep
+<h3>Gallery</h3>
+@foreach (var item in Photos)
+{
+    <img src="@item.Path" class="img-fluid" alt="@item.AltText">
+    <br />
+
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    public List<Foto> Photos { get 
+        { 
+        return caseificioRep.GetFotos(Id); 
+        } 
+    }
+
+
+}
